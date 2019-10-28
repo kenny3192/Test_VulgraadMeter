@@ -1538,11 +1538,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
+      "projectUniqueName": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter2\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
       "projectName": "Test_VulgraadMeter",
-      "projectPath": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
+      "projectPath": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter2\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
       "packagesPath": "C:\\Users\\Kenneth\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter\\Test_VulgraadMeter\\obj\\",
+      "outputPath": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter2\\Test_VulgraadMeter\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

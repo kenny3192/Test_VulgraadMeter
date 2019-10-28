@@ -6,26 +6,26 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/MyButton"
+        android:text="Voer het nummer in"
+        android:id="@+id/editText1" 
+        
     />
 
-    <Button
+        <Button
         android:background="#25AAFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Dit is een mooie button"
         android:id="@+id/MyButton" 
     />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_below="@id/MyButton"
-        android:id="@+id/editText1" 
-        android:background="#25AAFF"
-    />
 
+
+    
 
 
 

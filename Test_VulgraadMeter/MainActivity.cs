@@ -3,6 +3,8 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
+using Android.InputMethodServices;
+using System;
 
 namespace Test_VulgraadMeter
 {
@@ -18,10 +20,23 @@ namespace Test_VulgraadMeter
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            Button buttonBin = FindViewById<Button>(Resource.Id.MyButton);
+            buttonBin.Click += Button_Click;
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+
+            EditText editText = FindViewById<EditText>(Resource.Id.editText1);
+
+            //buttonBin.Click += delegate { buttonBin.Text = editText.Text; };
+
+                //string.Format("{0} clicks!", count++); };
         }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            SetContentView(Resource.Layout.Vulgraad);
+        }
+
+
         //public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         //{
         //    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
