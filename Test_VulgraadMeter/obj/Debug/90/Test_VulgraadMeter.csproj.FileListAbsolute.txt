@@ -555,3 +555,5 @@ C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\9
 C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\90\res\layout\vulgraad.xml
+C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\90\Test_VulgraadMeter.csprojAssemblyReference.cache
+C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\90\res\menu\popup_menu.xml

@@ -12,8 +12,10 @@ external-cache-path;C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_Vulgr
 external-path;C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\90\lp\35\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
+item;obj\Debug\90\res\menu\popup_menu.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;obj\Debug\90\res\layout\vulgraad.xml
+menu;obj\Debug\90\res\menu\popup_menu.xml
 paths;C:\Users\Kenneth\source\repos\Test_VulgraadMeter2\Test_VulgraadMeter\obj\Debug\90\lp\35\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 RelativeLayout;obj\Debug\90\res\layout\activity_main.xml
 resources;obj\Debug\90\res\values\colors.xml

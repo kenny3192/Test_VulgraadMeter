@@ -10,9 +10,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/MyButton"
-        android:text="Voer het nummer in"
-        android:id="@+id/editText1" 
+        android:id="@+id/editText1"
+        android:layout_marginTop="50dp"
+        android:inputType="none|number" 
+        android:hint="Voer het nummer in"
         
     />
 
@@ -20,8 +21,18 @@
         android:background="#25AAFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dit is een mooie button"
-        android:id="@+id/MyButton" 
+        android:text="Bevestig prullenbak nummer"
+        android:id="@+id/MyButton"
+        android:layout_marginTop="150dp"
+    />
+
+           <Button
+        android:background="#25AAFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save to CSV"
+        android:id="@+id/MySaveButton" 
+        android:layout_marginTop="450dp"
     />
 
 
