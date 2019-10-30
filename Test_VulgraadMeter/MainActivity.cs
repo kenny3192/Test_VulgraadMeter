@@ -15,6 +15,7 @@ namespace Test_VulgraadMeter
         EditText editText;
         Vulgraad vulgraad = new Vulgraad();
         Button buttonBin;
+        int count = 0;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -24,9 +25,7 @@ namespace Test_VulgraadMeter
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            buttonBin = FindViewById<Button>(Resource.Id.MyButton);
-               
-            buttonBin.Click += Button_Click;
+            
 
             editText = FindViewById<EditText>(Resource.Id.editText1);
             
@@ -34,7 +33,18 @@ namespace Test_VulgraadMeter
 
         public override void OnContentChanged()
         {
-             
+            if(count == 1)
+            {
+                View vulgraad = FindViewById<View>(Resource.Layout.Vulgraad);
+                SetContentView(vulgraad);
+                count = 0;
+            }
+            else
+            {
+                buttonBin = FindViewById<Button>(Resource.Id.MyButton);
+
+                buttonBin.Click += Button_Click;
+            }
         }
 
 
@@ -72,8 +82,9 @@ namespace Test_VulgraadMeter
         {
             vulgraad.Id = Convert.ToInt32(editText.Text);
 
-
+            count = 1;
             SetContentView(Resource.Layout.Vulgraad);
+            
             //SetContentView(Resource.Layout.Vulgraad);
         }
 
