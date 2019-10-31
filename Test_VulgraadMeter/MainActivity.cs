@@ -6,6 +6,10 @@ using Android.Widget;
 using Android.InputMethodServices;
 using System;
 using Android.Views;
+using Plugin.Permissions;
+using Android.Support.V4.Content;
+using Android;
+using Android.Content.PM;
 
 namespace Test_VulgraadMeter
 {
@@ -16,6 +20,9 @@ namespace Test_VulgraadMeter
         Vulgraad vulgraad = new Vulgraad();
         Button buttonBin;
         int count = 0;
+        CSVWriter csvWriter;
+        EmailTest emailTest;
+
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -25,10 +32,35 @@ namespace Test_VulgraadMeter
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            
+            csvWriter = new CSVWriter();
+            emailTest = new EmailTest();
 
             editText = FindViewById<EditText>(Resource.Id.editText1);
-            
+
+            string message = string.Empty;
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted &&
+                ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted)
+            {
+                Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
+                alertDialog.SetTitle("Titel");
+                alertDialog.SetMessage("Permission granted");
+                alertDialog.SetNeutralButton("OK", delegate {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+            }
+            else
+            {
+                Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
+                alertDialog.SetTitle("Titel");
+                alertDialog.SetMessage("Permission granted");
+                alertDialog.SetNeutralButton("OK", delegate {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+            }
+
         }
 
         public override void OnContentChanged()
@@ -49,9 +81,16 @@ namespace Test_VulgraadMeter
 
 
 
+
         public override void OnBackPressed()
         {
 
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
 
@@ -88,30 +127,62 @@ namespace Test_VulgraadMeter
             //SetContentView(Resource.Layout.Vulgraad);
         }
 
-        private void Button_Click_Onder30(object sender, EventArgs e)
+        private async void Button_Click_Onder30(object sender, EventArgs e)
         {
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
+            //DateTime.Now.TimeOfDay.ToString("hh:mm:ss");
+            //
+
+
             vulgraad.VulgraadNiveau = "0-30%";
+            vulgraad.Datum = DateTime.Now;
+            vulgraad.Tijdstip = tijd;
+
+            csvWriter.WriteObjectToCsv(vulgraad);
+            await emailTest.SendEmail();
+
+            await vulgraad.SaveCountAsync(2);
+
+            
 
             SetContentView(Resource.Layout.activity_main);
         }
 
         private void Button_Click_Onder50(object sender, EventArgs e)
         {
+            string tijd = Convert.ToString(DateTime.Now.TimeOfDay);
+
             vulgraad.VulgraadNiveau = "30-50%";
+            vulgraad.Datum = DateTime.Now;
+            vulgraad.Tijdstip = tijd;
+
+            csvWriter.WriteObjectToCsv(vulgraad);
 
             SetContentView(Resource.Layout.activity_main);
         }
 
         private void Button_Click_Onder80(object sender, EventArgs e)
         {
+            string tijd = String.Format("{0:HH:mm:ss.ffffff} ", DateTime.Now.TimeOfDay);
+
             vulgraad.VulgraadNiveau = "50-80%";
+            vulgraad.Datum = DateTime.Now;
+            vulgraad.Tijdstip = tijd;
+
+            csvWriter.WriteObjectToCsv(vulgraad);
 
             SetContentView(Resource.Layout.activity_main);
         }
 
         private void Button_Click_Boven80(object sender, EventArgs e)
         {
+            string tijd = String.Format("{0:HH:mm:ss.ffffff} ", DateTime.Now.TimeOfDay);
+
             vulgraad.VulgraadNiveau = "> 80%";
+            vulgraad.Datum = DateTime.Now; 
+            vulgraad.Tijdstip = tijd;
+
+            csvWriter.WriteObjectToCsv(vulgraad);
 
             SetContentView(Resource.Layout.activity_main);
         }

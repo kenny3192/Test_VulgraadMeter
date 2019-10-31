@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -25,14 +25,15 @@ namespace Test_VulgraadMeter
             mem = new MemoryStream();
             writer = new StreamWriter(mem);
             csvWriter = new CsvWriter(writer);
-
         }
 
 
 
         public void WriteObjectToCsv(Vulgraad vulgraad)
         {
-            string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "temp.txt");
+            //string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "test.csv");
+            string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "test.csv");
+
 
             csvWriter.Configuration.Delimiter = ";";
 
@@ -51,6 +52,34 @@ namespace Test_VulgraadMeter
 
             writer.Flush();
             var result = Encoding.UTF8.GetString(mem.ToArray());
+
+            File.WriteAllText(fileName, csvWriter.ToString());
+
+        }
+
+        public async Task<int> ReadCountAsync()
+        {
+            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "count.txt");
+
+            if (backingFile == null || !File.Exists(backingFile))
+            {
+                return 0;
+            }
+
+            var count = 0;
+            using (var reader = new StreamReader(backingFile, true))
+            {
+                string line;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    if (int.TryParse(line, out var newcount))
+                    {
+                        count = newcount;
+                    }
+                }
+            }
+
+            return count;
         }
     }
 }
