@@ -20,10 +20,13 @@ namespace Test_VulgraadMeter
         public DateTime Datum { get; set; }
         public string Tijdstip { get; set;  }
 
+        private List<Vulgraad> vulgraadLijst;
+
         public Vulgraad()
         {
             Datum = DateTime.Now.Date;
             Tijdstip = Convert.ToString(DateTime.Now.TimeOfDay);
+            vulgraadLijst = new List<Vulgraad>();
         }
 
         public Vulgraad(int id, string vulgraadNiveau)
@@ -37,22 +40,16 @@ namespace Test_VulgraadMeter
                 //Convert.ToString(DateTime.Now.TimeOfDay);
         }
 
-        public async Task SaveCountAsync(int count)
+        public void VoegToeAanLijst(Vulgraad v)
         {
-            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "count.txt");
-            //var backingFile = Path.Combine("/data", "count.txt");
-
-            using (var writer = File.CreateText(backingFile))
-            {
-                try
-                {
-                    await writer.WriteLineAsync(count.ToString());
-                }
-                catch(Exception e)
-                {
-
-                }
-            }
+            this.vulgraadLijst.Add(v);
         }
+
+        public List<Vulgraad> GetListVulgraad()
+        {
+            return this.vulgraadLijst;
+        }
+
+        
     }
 }

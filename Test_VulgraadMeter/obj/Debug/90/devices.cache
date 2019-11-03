@@ -1,1 +1,1 @@
-<Devices><Device id="RF8M220G71N"><ResultingAbi>arm64-v8a</ResultingAbi><SdkVersion>28</SdkVersion></Device></Devices>
+<Devices><Device id="RF8M220G71N"><ResultingAbi>arm64-v8a</ResultingAbi><SdkVersion>28</SdkVersion></Device><Device id="ZY223X77XW"><ResultingAbi>armeabi-v7a</ResultingAbi><SdkVersion>27</SdkVersion></Device></Devices>

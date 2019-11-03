@@ -35,7 +35,7 @@ namespace Test_VulgraadMeter
             csvWriter = new CSVWriter();
             emailTest = new EmailTest();
 
-            editText = FindViewById<EditText>(Resource.Id.editText1);
+            
 
             string message = string.Empty;
 
@@ -74,6 +74,7 @@ namespace Test_VulgraadMeter
             else
             {
                 buttonBin = FindViewById<Button>(Resource.Id.MyButton);
+                editText = FindViewById<EditText>(Resource.Id.editText1);
 
                 buttonBin.Click += Button_Click;
             }
@@ -119,6 +120,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click(object sender, EventArgs e)
         {
+            vulgraad.Id = 0;
             vulgraad.Id = Convert.ToInt32(editText.Text);
 
             count = 1;
@@ -138,12 +140,14 @@ namespace Test_VulgraadMeter
             vulgraad.Datum = DateTime.Now;
             vulgraad.Tijdstip = tijd;
 
-            csvWriter.WriteObjectToCsv(vulgraad);
+            vulgraad.VoegToeAanLijst(vulgraad);
+
+            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+
+
+            await csvWriter.SaveCountAsync(2);
+
             await emailTest.SendEmail();
-
-            await vulgraad.SaveCountAsync(2);
-
-            
 
             SetContentView(Resource.Layout.activity_main);
         }
@@ -156,7 +160,7 @@ namespace Test_VulgraadMeter
             vulgraad.Datum = DateTime.Now;
             vulgraad.Tijdstip = tijd;
 
-            csvWriter.WriteObjectToCsv(vulgraad);
+            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
 
             SetContentView(Resource.Layout.activity_main);
         }
@@ -169,7 +173,7 @@ namespace Test_VulgraadMeter
             vulgraad.Datum = DateTime.Now;
             vulgraad.Tijdstip = tijd;
 
-            csvWriter.WriteObjectToCsv(vulgraad);
+            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
 
             SetContentView(Resource.Layout.activity_main);
         }
@@ -182,7 +186,7 @@ namespace Test_VulgraadMeter
             vulgraad.Datum = DateTime.Now; 
             vulgraad.Tijdstip = tijd;
 
-            csvWriter.WriteObjectToCsv(vulgraad);
+            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
 
             SetContentView(Resource.Layout.activity_main);
         }

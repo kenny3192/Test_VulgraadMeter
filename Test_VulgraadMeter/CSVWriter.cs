@@ -29,7 +29,7 @@ namespace Test_VulgraadMeter
 
 
 
-        public void WriteObjectToCsv(Vulgraad vulgraad)
+        public void WriteObjectToCsv(List<Vulgraad> vulgraadLijst)
         {
             //string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "test.csv");
             string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "test.csv");
@@ -43,18 +43,41 @@ namespace Test_VulgraadMeter
             csvWriter.WriteField("Tijdstip");
             csvWriter.NextRecord();
 
+            foreach(Vulgraad v in vulgraadLijst)
+            {
+                csvWriter.WriteField(v.Id);
+                csvWriter.WriteField(v.VulgraadNiveau);
+                csvWriter.WriteField(v.Datum);
+                csvWriter.WriteField(v.Tijdstip);
+                csvWriter.NextRecord();
+            }
 
-            csvWriter.WriteField(vulgraad.Id);
-            csvWriter.WriteField(vulgraad.VulgraadNiveau);
-            csvWriter.WriteField(vulgraad.Datum);
-            csvWriter.WriteField(vulgraad.Tijdstip);
-            csvWriter.NextRecord();
+            
 
             writer.Flush();
             var result = Encoding.UTF8.GetString(mem.ToArray());
 
             File.WriteAllText(fileName, csvWriter.ToString());
 
+        }
+
+
+        public async Task SaveCountAsync(int count)
+        {
+            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "count.txt");
+            //var backingFile = Path.Combine("/data", "count.txt");
+
+            using (var writer = File.CreateText(backingFile))
+            {
+                try
+                {
+                    await writer.WriteLineAsync(count.ToString());
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
         }
 
         public async Task<int> ReadCountAsync()

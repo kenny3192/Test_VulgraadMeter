@@ -36,16 +36,16 @@ namespace Test_VulgraadMeter
                 var fn = "test.csv";
                 var file = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "count.txt");
                 //var file = Path.Combine(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData)), fn);
-                //File.WriteAllText(file, "Hello World");
+                File.WriteAllText(file, "Hello World");
 
-                //try
-                //{
-                //    message.Attachments.Add(new EmailAttachment(file));
-                //}
-                //catch (Exception e)
-                //{
+                try
+                {
+                    message.Attachments.Add(new EmailAttachment(file));
+                }
+                catch (Exception e)
+                {
 
-                //}
+                }
 
                 await Email.ComposeAsync(message);
 
