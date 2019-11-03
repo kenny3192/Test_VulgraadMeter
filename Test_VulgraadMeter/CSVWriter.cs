@@ -104,5 +104,34 @@ namespace Test_VulgraadMeter
 
             return count;
         }
+
+        public async Task<string> ReadCsvAsync()
+        {
+            string v = "";
+
+
+
+            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "test.csv");
+
+            if (backingFile == null || !File.Exists(backingFile))
+            {
+                return v;
+            }
+
+            using (var reader = new StreamReader(backingFile, true))
+            {
+                string line;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    if (line != null && line != "")
+                    {
+                        v += line;
+                        v += System.Environment.NewLine;
+                    }
+                }
+            }
+
+            return v;
+        }
     }
 }

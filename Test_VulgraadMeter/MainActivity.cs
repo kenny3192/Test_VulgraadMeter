@@ -22,6 +22,7 @@ namespace Test_VulgraadMeter
         int count = 0;
         CSVWriter csvWriter;
         EmailTest emailTest;
+        Button buttonSend;
 
 
 
@@ -75,8 +76,11 @@ namespace Test_VulgraadMeter
             {
                 buttonBin = FindViewById<Button>(Resource.Id.MyButton);
                 editText = FindViewById<EditText>(Resource.Id.editText1);
+                buttonSend = FindViewById<Button>(Resource.Id.Send);
+
 
                 buttonBin.Click += Button_Click;
+                buttonSend.Click += ButtonSend_Click;
             }
         }
 
@@ -129,12 +133,17 @@ namespace Test_VulgraadMeter
             //SetContentView(Resource.Layout.Vulgraad);
         }
 
-        private async void Button_Click_Onder30(object sender, EventArgs e)
+        private async void ButtonSend_Click(object sender, EventArgs e)
+        {
+            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+
+            await emailTest.SendEmail();
+        }
+
+        private void Button_Click_Onder30(object sender, EventArgs e)
         {
             string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
             //DateTime.Now.TimeOfDay.ToString("hh:mm:ss");
-            //
-
 
             vulgraad.VulgraadNiveau = "0-30%";
             vulgraad.Datum = DateTime.Now;
@@ -142,51 +151,55 @@ namespace Test_VulgraadMeter
 
             vulgraad.VoegToeAanLijst(vulgraad);
 
-            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+            //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
 
 
-            await csvWriter.SaveCountAsync(2);
+            //await csvWriter.SaveCountAsync(2);
 
-            await emailTest.SendEmail();
+            //await emailTest.SendEmail();
 
             SetContentView(Resource.Layout.activity_main);
         }
 
         private void Button_Click_Onder50(object sender, EventArgs e)
         {
-            string tijd = Convert.ToString(DateTime.Now.TimeOfDay);
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "30-50%";
             vulgraad.Datum = DateTime.Now;
             vulgraad.Tijdstip = tijd;
 
-            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+            //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+
+            vulgraad.VoegToeAanLijst(vulgraad);
 
             SetContentView(Resource.Layout.activity_main);
         }
 
         private void Button_Click_Onder80(object sender, EventArgs e)
         {
-            string tijd = String.Format("{0:HH:mm:ss.ffffff} ", DateTime.Now.TimeOfDay);
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "50-80%";
             vulgraad.Datum = DateTime.Now;
             vulgraad.Tijdstip = tijd;
 
-            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+            //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+            vulgraad.VoegToeAanLijst(vulgraad);
 
             SetContentView(Resource.Layout.activity_main);
         }
 
         private void Button_Click_Boven80(object sender, EventArgs e)
         {
-            string tijd = String.Format("{0:HH:mm:ss.ffffff} ", DateTime.Now.TimeOfDay);
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "> 80%";
             vulgraad.Datum = DateTime.Now; 
             vulgraad.Tijdstip = tijd;
 
-            csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+            //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+            vulgraad.VoegToeAanLijst(vulgraad);
 
             SetContentView(Resource.Layout.activity_main);
         }

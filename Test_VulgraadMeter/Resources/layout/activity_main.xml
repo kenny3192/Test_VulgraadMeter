@@ -26,6 +26,15 @@
         android:layout_marginTop="150dp"
     />
 
+    <Button
+        android:background="#25AAFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verzend gegevens"
+        android:id="@+id/Send"
+        android:layout_marginTop="350dp"
+    />
+
 
 
     

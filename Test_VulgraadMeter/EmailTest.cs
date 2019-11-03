@@ -23,29 +23,31 @@ namespace Test_VulgraadMeter
 
             CSVWriter v = new CSVWriter();
             var m = await v.ReadCountAsync();
+            var t = await v.ReadCsvAsync();
+            
 
             try
             {
                 var message = new EmailMessage
                 {
                     Subject = "Test app",
-                    Body = Convert.ToString(m),
+                    Body = Convert.ToString(t),
                     To = recipients,
                 };
 
                 var fn = "test.csv";
-                var file = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "count.txt");
-                //var file = Path.Combine(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData)), fn);
-                File.WriteAllText(file, "Hello World");
+                var file = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), fn);
+                //var file = Path.Combine(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)), fn);
+                //File.WriteAllText(file, "Hello World");
 
-                try
-                {
-                    message.Attachments.Add(new EmailAttachment(file));
-                }
-                catch (Exception e)
-                {
+                //try
+                //{
+                //    message.Attachments.Add(new EmailAttachment(file));
+                //}
+                //catch (Exception e)
+                //{
 
-                }
+                //}
 
                 await Email.ComposeAsync(message);
 
