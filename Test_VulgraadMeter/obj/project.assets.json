@@ -1780,25 +1780,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kenneth\\.nuget\\packages\\": {},
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter2\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\Test_VulgraadMeter\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
       "projectName": "Test_VulgraadMeter",
-      "projectPath": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter2\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
-      "packagesPath": "C:\\Users\\Kenneth\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kenneth\\source\\repos\\Test_VulgraadMeter2\\Test_VulgraadMeter\\obj\\",
+      "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\Test_VulgraadMeter\\Test_VulgraadMeter\\Test_VulgraadMeter.csproj",
+      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\Test_VulgraadMeter\\Test_VulgraadMeter\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Kenneth\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -1806,10 +1805,8 @@
         "monoandroid90"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://assanti.pkgs.visualstudio.com/_packaging/AssantiFeed/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "monoandroid90": {

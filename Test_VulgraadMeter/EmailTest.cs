@@ -40,14 +40,14 @@ namespace Test_VulgraadMeter
                 //var file = Path.Combine(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal)), fn);
                 //File.WriteAllText(file, "Hello World");
 
-                //try
-                //{
-                //    message.Attachments.Add(new EmailAttachment(file));
-                //}
-                //catch (Exception e)
-                //{
+                try
+                {
+                    message.Attachments.Add(new EmailAttachment(file));
+                }
+                catch (Exception e)
+                {
 
-                //}
+                }
 
                 await Email.ComposeAsync(message);
 
