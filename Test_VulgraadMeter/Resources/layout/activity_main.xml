@@ -13,7 +13,8 @@
         android:id="@+id/editText1"
         android:layout_marginTop="50dp"
         android:inputType="none|number" 
-        android:hint="Voer het nummer in"
+        android:hint="Voer het prullenbaknummer in"
+        android:textSize= "20dp"
         
     />
 
@@ -24,15 +25,17 @@
         android:text="Bevestig prullenbak nummer"
         android:id="@+id/MyButton"
         android:layout_marginTop="150dp"
+        android:textSize= "20dp"
     />
 
     <Button
-        android:background="#25AAFF"
+        android:background="#ffff0348"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Verzend gegevens"
         android:id="@+id/Send"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="450dp"
+        android:textSize= "20dp"
     />
 
 
