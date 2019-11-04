@@ -167,6 +167,8 @@ namespace Test_VulgraadMeter
 
             vulgraad.VoegToeAanLijst(vulgraad);
 
+            this.ShowAlertBox();
+
             //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
 
 
@@ -186,6 +188,7 @@ namespace Test_VulgraadMeter
             vulgraad.Tijdstip = tijd;
 
             //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
+            this.ShowAlertBox();
 
             vulgraad.VoegToeAanLijst(vulgraad);
 
@@ -200,8 +203,10 @@ namespace Test_VulgraadMeter
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
             vulgraad.Tijdstip = tijd;
 
+            
             //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
             vulgraad.VoegToeAanLijst(vulgraad);
+            this.ShowAlertBox();
 
             SetContentView(Resource.Layout.activity_main);
         }
@@ -214,10 +219,24 @@ namespace Test_VulgraadMeter
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
             vulgraad.Tijdstip = tijd;
 
+            
             //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
             vulgraad.VoegToeAanLijst(vulgraad);
+            this.ShowAlertBox();
 
             SetContentView(Resource.Layout.activity_main);
+        }
+
+        private void ShowAlertBox()
+        {
+            Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
+            alertDialog.SetTitle("Gelukt √");
+            alertDialog.SetMessage("De vulgraad is bevestigd!");
+            alertDialog.SetNeutralButton("OK", delegate
+            {
+                alertDialog.Dispose();
+            });
+            alertDialog.Show();
         }
 
 
