@@ -56,12 +56,12 @@ namespace Test_VulgraadMeter
 
         public string GetDataFromList()
         {
-            string v = "ID, Vulgraadniveau, Datum, Tijdstip";
+            string v = "ID; Vulgraadniveau; Datum; Tijdstip;";
             v += System.Environment.NewLine;
 
             foreach(Vulgraad vulgraad in this.vulgraadLijst)
             {
-                v += vulgraad.Id.ToString() + ", " + vulgraad.VulgraadNiveau + ", " + vulgraad.Datum.ToString() + ", " + vulgraad.Tijdstip.ToString();
+                v += vulgraad.Id.ToString() + "; " + vulgraad.VulgraadNiveau + "; " + vulgraad.Datum.ToString() + "; " + vulgraad.Tijdstip.ToString() + ";";
                 v += System.Environment.NewLine;
             }
             return v;
