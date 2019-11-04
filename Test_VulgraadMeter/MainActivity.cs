@@ -38,29 +38,29 @@ namespace Test_VulgraadMeter
 
             
 
-            string message = string.Empty;
+            //string message = string.Empty;
 
-            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted &&
-                ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted)
-            {
-                Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
-                alertDialog.SetTitle("Titel");
-                alertDialog.SetMessage("Permission granted");
-                alertDialog.SetNeutralButton("OK", delegate {
-                    alertDialog.Dispose();
-                });
-                alertDialog.Show();
-            }
-            else
-            {
-                Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
-                alertDialog.SetTitle("Titel");
-                alertDialog.SetMessage("Permission granted");
-                alertDialog.SetNeutralButton("OK", delegate {
-                    alertDialog.Dispose();
-                });
-                alertDialog.Show();
-            }
+            //if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted &&
+            //    ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted)
+            //{
+            //    Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
+            //    alertDialog.SetTitle("Titel");
+            //    alertDialog.SetMessage("Permission granted");
+            //    alertDialog.SetNeutralButton("OK", delegate {
+            //        alertDialog.Dispose();
+            //    });
+            //    alertDialog.Show();
+            //}
+            //else
+            //{
+            //    Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
+            //    alertDialog.SetTitle("Titel");
+            //    alertDialog.SetMessage("Permission granted");
+            //    alertDialog.SetNeutralButton("OK", delegate {
+            //        alertDialog.Dispose();
+            //    });
+            //    alertDialog.Show();
+            //}
 
         }
 
@@ -124,11 +124,26 @@ namespace Test_VulgraadMeter
 
         private void Button_Click(object sender, EventArgs e)
         {
-            vulgraad.Id = 0;
-            vulgraad.Id = Convert.ToInt32(editText.Text);
+            if(editText.Text == null || editText.Text == "")
+            {
+                Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
+                alertDialog.SetTitle("Waarschuwing");
+                alertDialog.SetMessage("Vul het prullenbaknummer in!");
+                alertDialog.SetNeutralButton("OK", delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+            }
+            else
+            {
+                vulgraad.Id = 0;
+                vulgraad.Id = Convert.ToInt32(editText.Text);
 
-            count = 1;
-            SetContentView(Resource.Layout.Vulgraad);
+                count = 1;
+                SetContentView(Resource.Layout.Vulgraad);
+            }
+            
             
             //SetContentView(Resource.Layout.Vulgraad);
         }
@@ -143,7 +158,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Onder30(object sender, EventArgs e)
         {
-            string tijd = DateTime.Now.ToString("HH:mm:ss");
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
             //DateTime.Now.TimeOfDay.ToString("hh:mm:ss");
 
             vulgraad.VulgraadNiveau = "0-30%";
@@ -164,7 +179,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Onder50(object sender, EventArgs e)
         {
-            string tijd = DateTime.Now.ToString("HH:mm:ss");
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "30-50%";
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
@@ -179,7 +194,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Onder80(object sender, EventArgs e)
         {
-            string tijd = DateTime.Now.ToString("HH:mm:ss");
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "50-80%";
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
@@ -193,7 +208,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Boven80(object sender, EventArgs e)
         {
-            string tijd = DateTime.Now.ToString("HH:mm:ss");
+            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "> 80%";
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
