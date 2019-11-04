@@ -25,13 +25,13 @@ namespace Test_VulgraadMeter
         public Vulgraad()
         {
             Datum = DateTime.Now.ToString("dd-MM-yyyy");
-            Tijdstip = Convert.ToString(DateTime.Now.TimeOfDay);
+            Tijdstip = DateTime.Now.ToString("HH:mm:ss");
             vulgraadLijst = new List<Vulgraad>();
         }
 
         public Vulgraad(int id, string vulgraadNiveau)
         {
-            var tijd = String.Format("{0:t}", DateTime.Now.TimeOfDay);
+            var tijd = DateTime.Now.ToString("HH:mm:ss");
 
             this.Id = id;
             this.VulgraadNiveau = vulgraadNiveau;
@@ -61,7 +61,7 @@ namespace Test_VulgraadMeter
 
             foreach(Vulgraad vulgraad in this.vulgraadLijst)
             {
-                v += vulgraad.Id.ToString() + " " + vulgraad.VulgraadNiveau + " " + vulgraad.Datum.ToString() + " " + vulgraad.Tijdstip.ToString();
+                v += vulgraad.Id.ToString() + ", " + vulgraad.VulgraadNiveau + ", " + vulgraad.Datum.ToString() + ", " + vulgraad.Tijdstip.ToString();
                 v += System.Environment.NewLine;
             }
             return v;

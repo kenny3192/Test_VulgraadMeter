@@ -143,7 +143,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Onder30(object sender, EventArgs e)
         {
-            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
+            string tijd = DateTime.Now.ToString("HH:mm:ss");
             //DateTime.Now.TimeOfDay.ToString("hh:mm:ss");
 
             vulgraad.VulgraadNiveau = "0-30%";
@@ -164,7 +164,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Onder50(object sender, EventArgs e)
         {
-            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
+            string tijd = DateTime.Now.ToString("HH:mm:ss");
 
             vulgraad.VulgraadNiveau = "30-50%";
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
@@ -179,7 +179,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Onder80(object sender, EventArgs e)
         {
-            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
+            string tijd = DateTime.Now.ToString("HH:mm:ss");
 
             vulgraad.VulgraadNiveau = "50-80%";
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
@@ -193,7 +193,7 @@ namespace Test_VulgraadMeter
 
         private void Button_Click_Boven80(object sender, EventArgs e)
         {
-            string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
+            string tijd = DateTime.Now.ToString("HH:mm:ss");
 
             vulgraad.VulgraadNiveau = "> 80%";
             vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
