@@ -124,11 +124,11 @@ namespace Test_VulgraadMeter
 
         private void Button_Click(object sender, EventArgs e)
         {
-            if(editText.Text == null || editText.Text == "")
+            if(editText.Text == null || editText.Text == "" || editText.Text.Length > 10)
             {
                 Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
                 alertDialog.SetTitle("Waarschuwing");
-                alertDialog.SetMessage("Vul het prullenbaknummer in!");
+                alertDialog.SetMessage("Vul een geldig prullenbaknummer in!");
                 alertDialog.SetNeutralButton("OK", delegate
                 {
                     alertDialog.Dispose();
