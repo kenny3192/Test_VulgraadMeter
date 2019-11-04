@@ -31,7 +31,7 @@ namespace Test_VulgraadMeter
 
         public Vulgraad(int id, string vulgraadNiveau)
         {
-            var tijd = String.Format("{0:HH:mm:ss.ffffff} ", DateTime.Now.TimeOfDay);
+            var tijd = String.Format("{0:t}", DateTime.Now.TimeOfDay);
 
             this.Id = id;
             this.VulgraadNiveau = vulgraadNiveau;
@@ -42,12 +42,29 @@ namespace Test_VulgraadMeter
 
         public void VoegToeAanLijst(Vulgraad v)
         {
-            this.vulgraadLijst.Add(v);
+            Vulgraad vulgraad = new Vulgraad(v.Id, v.VulgraadNiveau);
+            vulgraad.Datum = v.Datum;
+            vulgraad.Tijdstip = v.Tijdstip;
+            
+            this.vulgraadLijst.Add(vulgraad);
         }
 
         public List<Vulgraad> GetListVulgraad()
         {
             return this.vulgraadLijst;
+        }
+
+        public string GetDataFromList()
+        {
+            string v = "ID, Vulgraadniveau, Datum, Tijdstip";
+            v += System.Environment.NewLine;
+
+            foreach(Vulgraad vulgraad in this.vulgraadLijst)
+            {
+                v += vulgraad.Id.ToString() + " " + vulgraad.VulgraadNiveau + " " + vulgraad.Datum.ToString() + " " + vulgraad.Tijdstip.ToString();
+                v += System.Environment.NewLine;
+            }
+            return v;
         }
 
         

@@ -16,14 +16,14 @@ namespace Test_VulgraadMeter
 {
     class EmailTest
     {
-        public async Task SendEmail()
+        public async Task SendEmail(Vulgraad vulgraad)
         {
             List<string> recipients = new List<string>();
             recipients.Add("1562185reijnders@zuyd.nl");
 
             CSVWriter v = new CSVWriter();
             var m = await v.ReadCountAsync();
-            var t = await v.ReadCsvAsync();
+            var t = v.GetData(vulgraad);
             
 
             try

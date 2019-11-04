@@ -32,7 +32,7 @@ namespace Test_VulgraadMeter
         public void WriteObjectToCsv(List<Vulgraad> vulgraadLijst)
         {
             //string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "test.csv");
-            string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "test.csv");
+            string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "test.csv");
 
 
             csvWriter.Configuration.Delimiter = ";";
@@ -60,6 +60,24 @@ namespace Test_VulgraadMeter
             File.WriteAllText(fileName, csvWriter.ToString());
 
         }
+
+        //public async Task WriteObjectToCsv2(List<Vulgraad> vulgraadLijst)
+        //{
+        //    var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "test.csv");
+
+        //    using (var writer = File.CreateText(backingFile))
+        //    {
+        //        try
+        //        {
+        //            await writer.WriteLineAsync(count.ToString());
+        //        }
+        //        catch (Exception e)
+        //        {
+
+        //        }
+        //    }
+        //}
+    
 
 
         public async Task SaveCountAsync(int count)
@@ -131,7 +149,16 @@ namespace Test_VulgraadMeter
                 }
             }
 
+
+
+
             return v;
+        }
+
+        public string GetData(Vulgraad v)
+        {
+            string vulgraad = v.GetDataFromList();
+            return vulgraad;
         }
     }
 }

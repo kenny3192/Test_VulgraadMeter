@@ -137,7 +137,8 @@ namespace Test_VulgraadMeter
         {
             csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
 
-            await emailTest.SendEmail();
+            await emailTest.SendEmail(vulgraad);
+
         }
 
         private void Button_Click_Onder30(object sender, EventArgs e)
