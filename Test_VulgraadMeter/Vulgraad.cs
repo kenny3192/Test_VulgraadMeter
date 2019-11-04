@@ -17,14 +17,14 @@ namespace Test_VulgraadMeter
     {
         public int Id { get; set; }
         public string VulgraadNiveau { get; set; }
-        public DateTime Datum { get; set; }
+        public string Datum { get; set; }
         public string Tijdstip { get; set;  }
 
         private List<Vulgraad> vulgraadLijst;
 
         public Vulgraad()
         {
-            Datum = DateTime.Now.Date;
+            Datum = DateTime.Now.ToString("dd-MM-yyyy");
             Tijdstip = Convert.ToString(DateTime.Now.TimeOfDay);
             vulgraadLijst = new List<Vulgraad>();
         }
@@ -35,7 +35,7 @@ namespace Test_VulgraadMeter
 
             this.Id = id;
             this.VulgraadNiveau = vulgraadNiveau;
-            Datum = DateTime.Now.Date;
+            Datum = DateTime.Now.ToString("dd-MM-yyyy");
             Tijdstip = tijd;
                 //Convert.ToString(DateTime.Now.TimeOfDay);
         }

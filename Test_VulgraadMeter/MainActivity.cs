@@ -146,7 +146,7 @@ namespace Test_VulgraadMeter
             //DateTime.Now.TimeOfDay.ToString("hh:mm:ss");
 
             vulgraad.VulgraadNiveau = "0-30%";
-            vulgraad.Datum = DateTime.Now;
+            vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
             vulgraad.Tijdstip = tijd;
 
             vulgraad.VoegToeAanLijst(vulgraad);
@@ -166,7 +166,7 @@ namespace Test_VulgraadMeter
             string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "30-50%";
-            vulgraad.Datum = DateTime.Now;
+            vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
             vulgraad.Tijdstip = tijd;
 
             //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
@@ -181,7 +181,7 @@ namespace Test_VulgraadMeter
             string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "50-80%";
-            vulgraad.Datum = DateTime.Now;
+            vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
             vulgraad.Tijdstip = tijd;
 
             //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
@@ -195,7 +195,7 @@ namespace Test_VulgraadMeter
             string tijd = String.Format("{0:t} ", DateTime.Now.TimeOfDay);
 
             vulgraad.VulgraadNiveau = "> 80%";
-            vulgraad.Datum = DateTime.Now; 
+            vulgraad.Datum = DateTime.Now.ToString("dd-MM-yyyy");
             vulgraad.Tijdstip = tijd;
 
             //csvWriter.WriteObjectToCsv(vulgraad.GetListVulgraad());
